@@ -1,0 +1,214 @@
+header {
+    color: #266bc0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+.bioContainer {
+    background: linear-gradient(
+            to bottom,
+            #4367be,
+            #466cc5,
+            #4a71ce,
+            #4e79d7,
+            #5782df,
+            #638ce6,
+            #7197ec,
+            #7da0f0,
+            #87a9f2,
+            #91b0f3
+    ) no-repeat top center;
+    background-size: cover;
+}
+
+header > nav {
+    display: flex;
+    gap: 2em;
+}
+
+header > section > h1 {
+    color: #f0f8ff;
+}
+
+header > nav > ul {
+    display: flex;
+    font-size: 1.2em;
+}
+
+
+img {
+    position: absolute;
+    bottom: 0;
+    right: 2em;
+}
+
+.bioContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.bioContainer > h1 {
+    color: #f0f8ff;
+    font-size: 3rem;
+    max-width: 7em;
+    flex-grow: 4;
+}
+
+
+.char-span {
+    display: inline-block;
+    transition: transform 0.1s ease-out;
+}
+
+.bioContainer > h2 {
+    color: #bddbff;
+    font-weight: 400;
+    flex-grow: 1;
+}
+
+.bioContainer ul {
+    display: flex;
+    gap: 20px;
+}
+
+.bioContainer ul li {
+  font-size: 1.5rem;
+    color: #bddbff;
+}
+
+.bioContainer a {
+    text-decoration: none;
+    color: #bddbff;
+}
+/* nav */
+
+.nav {
+    position: fixed;
+    background-color: #f0f8fff9;
+    z-index: 3;
+    transition: .3s cubic-bezier(0.62, -0.03, 0.15, 0.96);
+    overflow: hidden;
+    height: 100%;
+}
+
+.nav-closed {
+    left: 10px;
+    right: 10px;
+    bottom: -100vh;
+    top:100vh;
+}
+
+.nav-open {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    width: 100%;
+}
+
+.nav ul li {
+    font-size: 1.5rem;
+}
+
+.nav ul li:last-of-type {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* menu */
+
+.menu-button {
+    background: #f0f8fff9;
+    background-blend-mode: color;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    height: 50px;
+    width: 50px;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 10px;
+}
+
+/* menu icon */
+
+.menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    user-select: none;
+
+}
+
+.menu-icon .navicon {
+    background: #333;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+}
+
+.menu-icon .navicon:before,
+.menu-icon .navicon:after {
+    background: #333;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.menu-icon .navicon:before {
+    top: 5px;
+}
+
+.menu-icon .navicon:after {
+    top: -5px;
+}
+
+/* menu input */
+
+.menu-input{
+    display: none;
+}
+
+
+.menu-input:checked ~ .menu {
+    max-height: 240px;
+}
+.menu-input:checked ~ .menu-icon .navicon {
+    background: transparent;
+}
+.menu-input:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+}
+
+.menu-input:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+}
+
+.menu-input:checked ~ .menu-icon:not(.steps) .navicon:before,
+.menu-input:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
+
+

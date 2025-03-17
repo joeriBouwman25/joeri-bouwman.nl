@@ -1,0 +1,37 @@
+.footer {
+    padding: 20px;
+    background: #f0f8ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.footer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.footer ul li a{
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #466cc5;
+}
+
+.scrollButton {
+    background: #f0f8fff9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    border: none;
+    color: #466cc5;
+    background-blend-mode: color;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 1px 3px 6px 1px #0000002b;
+}
