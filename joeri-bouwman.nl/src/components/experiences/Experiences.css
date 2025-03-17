@@ -1,0 +1,44 @@
+
+.experiences {
+    position: relative;
+    /*height: 100vh;*/
+    background: linear-gradient(
+            to bottom,
+            #4367be,
+            #466cc5,
+            #4a71ce,
+            #4e79d7,
+            #5782df,
+            #638ce6,
+            #7197ec,
+            #7da0f0,
+            #87a9f2,
+            #91b0f3
+    ) no-repeat top center;
+}
+.experiencesContainer {
+    position: relative;
+    top: 0;
+    border-radius: 10px 10px 0 0;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.functions > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.Vertical-timeline {
+    margin: 0 auto !important;
+    max-width: 1250px;
+    overflow: hidden;
+    height: 100%
+;
+}
+
+.test {
+    height: 100vh;
+}
