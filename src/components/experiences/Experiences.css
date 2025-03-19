@@ -1,7 +1,7 @@
 
 .experiences {
     position: relative;
-    /*height: 100vh;*/
+    width: 100%;
     background: linear-gradient(
             to bottom,
             #4367be,
@@ -15,6 +15,7 @@
             #87a9f2,
             #91b0f3
     ) no-repeat top center;
+    border-radius: 10px 10px 0 0;
 }
 .experiencesContainer {
     position: relative;
@@ -29,16 +30,4 @@
 .functions > div {
     display: flex;
     flex-direction: column;
-}
-
-.Vertical-timeline {
-    margin: 0 auto !important;
-    max-width: 1250px;
-    overflow: hidden;
-    height: 100%
-;
-}
-
-.test {
-    height: 100vh;
 }

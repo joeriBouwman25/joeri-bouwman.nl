@@ -8,7 +8,7 @@ export const Experiences = () => {
     return (
         <section className='experiences'>
             <div className='experiencesContainer'>
-                <VerticalTimeline className='test'  lineColor='#f0f8ff'>
+                <VerticalTimeline lineColor='#f0f8ff'>
                     <VerticalTimelineElement
                         className="vertical-timeline-element--work"
                         contentStyle={{ background: '#638ce6', color: '#f0f8ff' }}

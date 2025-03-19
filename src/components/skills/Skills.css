@@ -42,6 +42,7 @@
     padding: 20px;
     background:  linear-gradient(#f0f8ff 75%, #91b0f3) no-repeat top center;
     box-shadow: 2px -3px 6px 1px #0000000f;
+    overflow: hidden;
 
 }
 
@@ -102,10 +103,20 @@
    .skillsContainer {
        display: flex;
        gap: 2em;
-       padding: 2em;
+       flex-wrap: wrap;
+       justify-content: space-between;
+       margin-top: 20px
    }
     .skillsContainer article {
         min-height: fit-content;
         height: 80vh;
+        width: 31%;
+        top: 20px !important;
+    }
+    .skillsContainer article:first-of-type {
+        margin-left: 20px;
+    }
+    .skillsContainer article:last-of-type {
+        margin-right: 20px;
     }
 }
