@@ -1,0 +1,139 @@
+.about {
+    min-height: 100vh;
+    padding: 6rem 5%;
+    background: #ffffff;
+    position: relative;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, #6a86c3 0%, #b6dcff 100%);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 300;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.about-intro {
+    font-size: 1.5rem;
+    color: #434d6b;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+.about-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.about-card {
+    background: linear-gradient(135deg, #475d84 0%, #6a86c3 50%, #b9b6e5 100%);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(106, 134, 195, 0.4);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    font-size: 1.8rem;
+}
+
+.about-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.about-card p {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.about-card span {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 968px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .about {
+        padding: 4rem 5%;
+    }
+}
+
+@media (max-width: 640px) {
+    .about-cards {
+        gap: 1rem;
+    }
+
+    .about-card {
+        padding: 1.5rem;
+    }
+}

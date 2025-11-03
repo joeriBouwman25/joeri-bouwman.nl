@@ -1,0 +1,29 @@
+
+.experiences {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(
+            to bottom,
+            #434d6b,
+            #475d84,
+            #6a86c3,
+            #b9b6e5,
+            #b6dcff,
+            #d0dbef
+    ) no-repeat top center;
+    border-radius: 10px 10px 0 0;
+}
+.experiencesContainer {
+    position: relative;
+    top: 0;
+    border-radius: 10px 10px 0 0;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.functions > div {
+    display: flex;
+    flex-direction: column;
+}
