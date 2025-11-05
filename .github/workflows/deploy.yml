@@ -2,7 +2,7 @@ name: Build & Deploy (pnpm)
 
 on:
   push:
-    branches: ["**"]   # elke push triggert een build
+    branches: ["**"]   # elke push triggert een build + deploy
   workflow_dispatch:
 
 jobs:
@@ -19,13 +19,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Installeer Node en cache pnpm
+      # Installeer Node
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # ✅ Gebruik officiële pnpm setup actie (fix voor jouw fout)
+      # Installeer en configureer pnpm
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -35,17 +35,25 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Build met juiste PUBLIC_URL zodat /static/ urls kloppen
       - name: Build project
         run: pnpm build
+        env:
+          PUBLIC_URL: /
 
-      # Detecteer build output (CRA=build, Vite=dist)
+      # Detecteer build output map (CRA = build, Vite = dist)
       - name: Detect output directory
         id: out
         run: |
-          if [ -d "dist" ]; then echo "dir=dist" >> $GITHUB_OUTPUT; exit 0; fi
-          if [ -d "build" ]; then echo "dir=build" >> $GITHUB_OUTPUT; exit 0; fi
-          echo "Geen dist/build gevonden"; exit 1
+          if [ -f "build/index.html" ]; then
+            echo "dir=build" >> $GITHUB_OUTPUT
+          elif [ -f "dist/index.html" ]; then
+            echo "dir=dist" >> $GITHUB_OUTPUT
+          else
+            echo "Geen build output gevonden (build/ of dist/ ontbreekt)"; exit 1
+          fi
 
+      # Voorbereiden SSH key
       - name: Prepare SSH key
         run: |
           install -m 700 -d ~/.ssh
@@ -53,13 +61,15 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -p "${SSH_PORT:-22}" "${SSH_HOST}" >> ~/.ssh/known_hosts
 
+      # Upload build naar VPS via rsync
       - name: Deploy via rsync
         run: |
           rsync -avz --delete -e "ssh -i ~/.ssh/id_ed25519 -p ${SSH_PORT:-22}" \
             "${{ steps.out.outputs.dir }}/" \
             "${SSH_USER}@${SSH_HOST}:${TARGET_DIR}"
 
-      - name: Reload Apache (best effort)
+      # Herlaad Apache (optioneel, niet kritisch)
+      - name: Reload Apache
         run: |
           ssh -i ~/.ssh/id_ed25519 -p "${SSH_PORT:-22}" \
             "${SSH_USER}@${SSH_HOST}" "sudo systemctl reload apache2 || true"
