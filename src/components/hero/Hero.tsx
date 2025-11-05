@@ -44,7 +44,7 @@ export const Hero = () => {
                 <div className="hero-text">
                     <h1 className="hero-name">Joeri Bouwman</h1>
                     <h2 className="hero-title">
-                        <span className="gradient-text">Front end Developer</span>
+                        <span className="gradient-text">Front-end Developer</span>
                     </h2>
                     <p className="hero-description">
                         Gespecialiseerd in React, TypeScript, en UX design.
