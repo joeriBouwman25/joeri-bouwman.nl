@@ -1,0 +1,60 @@
+name: Build & Deploy (pnpm)
+
+on:
+  push:
+    branches: ["**"]    # draait bij elke push
+  workflow_dispatch:     # handmatig starten
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      SSH_PORT: ${{ secrets.SSH_PORT }}
+      TARGET_DIR: ${{ secrets.TARGET_DIR }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node + pnpm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Detect output directory
+        id: out
+        run: |
+          if [ -d "dist" ]; then echo "dir=dist" >> $GITHUB_OUTPUT; exit 0; fi
+          if [ -d "build" ]; then echo "dir=build" >> $GITHUB_OUTPUT; exit 0; fi
+          echo "Geen dist/build gevonden"; exit 1
+
+      - name: Prepare SSH key
+        run: |
+          install -m 700 -d ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "${SSH_PORT:-22}" "${SSH_HOST}" >> ~/.ssh/known_hosts
+
+      - name: Deploy via rsync
+        run: |
+          rsync -avz --delete -e "ssh -i ~/.ssh/id_ed25519 -p ${SSH_PORT:-22}" \
+            "${{ steps.out.outputs.dir }}/" \
+            "${SSH_USER}@${SSH_HOST}:${TARGET_DIR}"
+
+      - name: Reload Apache (best effort)
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -p "${SSH_PORT:-22}" \
+            "${SSH_USER}@${SSH_HOST}" "sudo systemctl reload apache2 || true"
