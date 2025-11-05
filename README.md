@@ -40,5 +40,3 @@ src/
 ## License
 MIT © 2025 Joeri Bouwman
 
----
-Feel free to open issues or PRs for suggestions or improvements.
