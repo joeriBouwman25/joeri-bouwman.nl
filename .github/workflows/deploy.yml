@@ -2,8 +2,8 @@ name: Build & Deploy (pnpm)
 
 on:
   push:
-    branches: ["**"]    # draait bij elke push
-  workflow_dispatch:     # handmatig starten
+    branches: ["**"]   # elke push triggert een build
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -19,14 +19,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node + pnpm
+      # Installeer Node en cache pnpm
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      # ✅ Gebruik officiële pnpm setup actie (fix voor jouw fout)
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -34,6 +38,7 @@ jobs:
       - name: Build project
         run: pnpm build
 
+      # Detecteer build output (CRA=build, Vite=dist)
       - name: Detect output directory
         id: out
         run: |
