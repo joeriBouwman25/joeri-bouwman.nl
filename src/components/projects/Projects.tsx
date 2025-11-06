@@ -14,8 +14,8 @@ const projectsData = [
     {
         id: 2,
         title: "1001 Albums",
-        description: "Een project om muziek albums te ontdekken, beoordelen en verzamelen. Gebouwd met React voor de frontend en MySQL voor de backend database. in dit project lag voor mij de focus op het oefenen met Mysql",
-        tags: ["React", "Redux Toolkit", "MySQL"],
+        description: "Een project om muziek albums te ontdekken, beoordelen en verzamelen. Gebouwd met React voor de frontend en NodeJS voor de backend. Albums worden opgehaald uit een MongoDB database. in dit project lag voor mij de focus op het oefenen met NodeJS en MongoDB",
+        tags: ["React", "Redux Toolkit", "NodeJS", "Express", "MongoDB"],
         image: "💿",
         link: "https://joeribouwman25.github.io/1001-albums-statistics/",
         github: "https://github.com/joeriBouwman25/1001-albums-statistics",
