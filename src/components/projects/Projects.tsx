@@ -51,7 +51,7 @@ export const Projects = () => {
                                         src={project.link}
                                         title={project.title}
                                         className="project-preview"
-                                        loading="lazy"
+                                        loading="eager"
                                     />
                                 ) : (
                                     <span className="project-emoji">{project.image}</span>
