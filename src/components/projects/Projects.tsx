@@ -13,6 +13,16 @@ const projectsData = [
     },
     {
         id: 2,
+        title: "1001 Albums",
+        description: "Een project om muziek albums te ontdekken, beoordelen en verzamelen. Gebouwd met React voor de frontend en MySQL voor de backend database. in dit project lag voor mij de focus op het oefenen met Mysql",
+        tags: ["React", "Redux Toolkit", "MySQL"],
+        image: "💿",
+        link: "https://joeribouwman25.github.io/1001-albums-statistics/",
+        github: "https://github.com/joeriBouwman25/1001-albums-statistics",
+        hasPreview: true
+    },
+    {
+        id: 3,
         title: "Zig",
         description: "Onderhouden en verbeteren van de huurders- en woningzoekende apps, inclusief nieuwe features, UX-optimalisatie en systeemintegraties.",
         tags: ["React", "TypeScript", "Vite", "Firebase", "Redux Toolkit", "Ionic"],
@@ -20,15 +30,6 @@ const projectsData = [
         link: "https://zig.nl",
         github: "#",
         hasPreview: true
-    },
-    {
-        id: 3,
-        title: "1001 Albums",
-        description: "Een project om muziek albums te ontdekken, beoordelen en verzamelen. Gebouwd met React voor de frontend en MySQL voor de backend database. in dit project lag voor mij de focus op het oefenen met Mysql",
-        tags: ["React", "Redux Toolkit", "MySQL"],
-        image: "💿",
-        link: "#",
-        github: "#"
     },
 ];
 
