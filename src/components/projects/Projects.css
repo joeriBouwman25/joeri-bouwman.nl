@@ -54,7 +54,7 @@
 
 .project-emoji {
     font-size: 5rem;
-    z-index: 1;
+    width: 100%;
 }
 
 .project-overlay {

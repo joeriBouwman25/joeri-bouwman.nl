@@ -1,4 +1,5 @@
 import './Projects.css'
+import img from '../../assets/1001Albums_screen.png'
 
 const projectsData = [
     {
@@ -16,10 +17,9 @@ const projectsData = [
         title: "1001 Albums",
         description: "Een project om muziek albums te ontdekken, beoordelen en verzamelen. Gebouwd met React voor de frontend en NodeJS voor de backend. Albums worden opgehaald uit een MongoDB database. in dit project lag voor mij de focus op het oefenen met NodeJS en MongoDB",
         tags: ["React", "Redux Toolkit", "NodeJS", "Express", "MongoDB"],
-        image: "💿",
+        image: img,
         link: "https://joeribouwman25.github.io/1001-albums-statistics/",
         github: "https://github.com/joeriBouwman25/1001-albums-statistics",
-        hasPreview: true
     },
     {
         id: 3,
@@ -51,10 +51,11 @@ export const Projects = () => {
                                         src={project.link}
                                         title={project.title}
                                         className="project-preview"
-                                        loading="eager"
+                                        loading="lazy"
                                     />
                                 ) : (
-                                    <span className="project-emoji">{project.image}</span>
+                                    <img className="project-emoji" src={project.image} alt='project_img'/>
+                                    // <span className="project-emoji">{project.image}</span>
                                 )}
                                 <div className="project-overlay">
                                     <a href={project.link} className="project-link" target="_blank" rel="noopener noreferrer">
